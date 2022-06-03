@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<h1>Breaking bad</h1>
+	<script type="module" >
+		// import { name, age } from "./person.js"; //named import es6
+		// import x from "./message.js";			//default import es6
+		const {name, age} = require("./person.js"); //named import es5
+		const message = require("./message.js")		//default import es5
+		console.log(name, age);
+		console.log(message);
+		console.log("kncdf")
+	</script>
+
+	</body>
+</html>
