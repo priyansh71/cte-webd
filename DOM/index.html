@@ -4,27 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico">
     <title>DOM Example</title>
 </head>
+    <style>
+        img {
+            width: 500px;
+        }
+    </style>
 <body>
-    <h1>0</h1>
-    <br>
-    <br>
-    <br>
-    <button onclick="add()">Add</button>
-    <button onclick="subtract()">Subtract</button>
+
+    <img src="ttps://media.wired.com/photos/5b8999943667562d3024c321/master/w_2560%2Cc_limit/trash2-01.jpg">
+
+
     <script type="text/javascript">
-       
-       function add(){
-           const header = document.querySelector("h1");
-            header.innerText = parseInt(header.innerText) + 1;
-       }
 
-       function subtract(){
-           const header = document.querySelector("h1");
-            header.innerText = parseInt(header.innerText) - 1;
-       }
+        
+        const img = document.querySelector('img');
+        const div = document.createElement('div');
 
+        const loaded = () => {
+            div.innerText = "Trash Logo";
+            document.querySelector('body').appendChild(div);
+            console.log("Image loaded");
+        }
+
+        const didNotLoad = () => {
+            div.innerText = "Error loading image";
+            document.querySelector('body').appendChild(div);
+            console.log("Image error");
+        }
+
+
+        const newPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if(img.naturalWidth > 0) resolve();
+            else reject();
+        }, 1000);
+    });
+
+        newPromise.then(() => {
+            loaded()
+        }).catch(() => {
+            didNotLoad()
+        })
+
+        // console.log("Fetch started")
+        // fetch('https://jsonplaceholder.typicode.com/users')
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log(data);
+        // }).catch(error => {
+        //     console.log(error)
+        // })
+        // console.log("Fetch ended")
+        // console.log("Hello world")
 
     </script>
 </body>
