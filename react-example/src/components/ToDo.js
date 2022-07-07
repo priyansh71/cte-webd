@@ -1,12 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const ToDo = () => {
   const [task, setTask] = useState("");
-  const [todoList, setTodoList] = useState([{
-    id: 1,
-    task: "Buy catnip",
-    complete: false,
-  }]);
+  const [todoList, setTodoList] = useState([]);
 
   const handleComplete = (id) => {
     setTodoList(
@@ -18,6 +16,7 @@ const ToDo = () => {
   }
   return (
     <div>
+      <Link to="/">Back Home</Link>
       <center>
         <input
           type="text"
@@ -26,7 +25,25 @@ const ToDo = () => {
           spellCheck="false"
           onChange={(e) => setTask(e.target.value)}
         />
-        <button
+        <Button
+            color="error"
+            variant="contained"
+            onClick={() => {
+              task &&
+                setTodoList([
+                  ...todoList,
+                  {
+                    id: todoList.length + 1,
+                    task: task,
+                    complete: false,
+                  }
+                  ]);
+              setTask("");
+                }}
+        >
+          Add
+        </Button>
+        {/* <button
           onClick={() => {
             task &&
               setTodoList([
@@ -42,6 +59,7 @@ const ToDo = () => {
         >
           Add
         </button>
+         */}
         {todoList.map((member) => {
           return (
             <div
@@ -60,6 +78,7 @@ const ToDo = () => {
             >
               <span>{member.task}</span>
             </div>
+
           );
         })}
       </center>

@@ -24,7 +24,7 @@ input:focus {
   outline: none;
 }
 
-button {
+/* button {
   width: 10%;
   padding: 10px;
   border-radius: 5px;
@@ -34,7 +34,7 @@ button {
   font-size: 1.2em;
   color: #fff;
   cursor: pointer;
-}
+} */
 
 span {
   font-size: 22px;
